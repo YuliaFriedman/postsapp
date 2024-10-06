@@ -1,0 +1,15 @@
+:host{
+  flex: 1;
+  display: block;
+  padding: 10px;
+  border: 1px solid blue;
+}
+
+:host:hover {
+  background-color: azure;
+}
+
+.title{
+  font-size: 30px;
+  margin-bottom: 10px;
+}

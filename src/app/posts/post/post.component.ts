@@ -18,6 +18,6 @@ export class PostComponent{
   }
 
   postClicked($event){
-    this.navigationService.navigateToPost(this.post.id);
+    this.navigationService.navigateToPost(this.post.id.toString());
   }
 }

@@ -8,6 +8,6 @@ export class NavigationService{
  }
 
  navigateToPost(id: string){
-   this.router.navigate(["post"], {state: {id: id}});
+   this.router.navigate(["/post", id]);
  }
 }

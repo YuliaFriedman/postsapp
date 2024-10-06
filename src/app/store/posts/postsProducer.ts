@@ -22,9 +22,15 @@ export class PostsProducer{
     return this.store.select(postsSelector);
   }
 
-  getPost(id: string):Observable<PostModel>{
+  getPost(id: number):Observable<PostModel>{
     return this.store.select(postsSelector).pipe(
       map(posts => posts.find(post => post.id === id))
+    );
+  }
+
+  getPostByIndex(index: number):Observable<PostModel>{
+    return this.store.select(postsSelector).pipe(
+      map(posts => posts && posts.length > index ? posts[index] : undefined)
     );
   }
 }

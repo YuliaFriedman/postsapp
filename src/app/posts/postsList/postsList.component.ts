@@ -1,7 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {PostModel} from "../../store/posts/postModel";
+import {Component, OnInit} from "@angular/core";
 import {PostsService} from "../postsService";
-import {Router} from "@angular/router";
 import {NavigationService} from "../../navigationService";
 
 @Component({
@@ -11,11 +9,16 @@ import {NavigationService} from "../../navigationService";
 })
 export class PostsListComponent implements OnInit{
 
-  constructor(public postsService: PostsService) {
+  constructor(public postsService: PostsService, private navigationService: NavigationService) {
+
   }
 
   ngOnInit(): void {
     this.postsService.LoadPosts();
+  }
+
+  showNewPostPage(){
+    this.navigationService.navigateToNewPost();
   }
 
 }

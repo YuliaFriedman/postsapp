@@ -7,12 +7,15 @@ import {PostModel} from "./postModel";
 
 @Injectable()
 export class PostsEffects{
+
   constructor(private actions$: Actions, private networkService:NetworkService) {
   }
 
   loadEffect$ = createEffect(() => this.actions$.pipe(
     ofType(setPosts),
-    mergeMap(() => this.networkService.getPosts().pipe(map((posts) => {return {id: "", title: "aaa"} as PostModel}))),
+    mergeMap(() => this.networkService.getPosts().pipe(
+      map((posts) => {return {id: "", title: "aaa"} as PostModel}))
+    ),
 
   ));
 }

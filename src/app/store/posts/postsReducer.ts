@@ -14,12 +14,9 @@ export const PostsReducer = createReducer(
       return posts;
     }
   ),
-  /*on(addPostCompleted, (state, post) =>
+  on(addPostCompleted, (state, post) =>
   {
-    return {
-      ...state,
-      posts: [...state.posts, post]
-    }
+    return [...state, post]
   }
-  )*/
+  )
 )

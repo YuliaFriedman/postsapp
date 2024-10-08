@@ -1,5 +1,12 @@
-<ng-container *ngIf="postsService.getPosts() | async; let posts">
-  <div *ngFor="let post of posts">
-    <post [post]="post"></post>
-  </div>
+<app-header>
+  <div center #center>POSTS APP</div>
+  <button left (click)="showNewPostPage()">Add Post</button>
+</app-header>
+<ng-container *ngIf="postsService.getPosts() | async as posts">
+  <virtual-scroll [items]="posts" [buffer]="10" [itemHeight]="84" [numOfItems]="10">
+    <ng-template let-item>
+      <post [postModel]="item"></post>
+    </ng-template>
+  </virtual-scroll>
 </ng-container>
+

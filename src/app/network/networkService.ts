@@ -4,7 +4,8 @@ import {Observable} from "rxjs";
 import {PostModel} from "../store/posts/postModel";
 
 export enum Urls {
-  allPosts= "https://jsonplaceholder.typicode.com/posts"
+  allPosts = "https://jsonplaceholder.typicode.com/posts",
+  addPost = "https://jsonplaceholder.typicode.com/posts"
 }
 
 @Injectable()
@@ -14,5 +15,9 @@ export class NetworkService{
 
   getPosts(){
     return this.http.get(Urls.allPosts);
+  }
+
+  addPost(post:PostModel){
+    return this.http.post(Urls.addPost, post);
   }
 }

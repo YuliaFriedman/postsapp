@@ -1,0 +1,7 @@
+  <div>
+    <div [style.height.px]="startIndex * itemHeight"></div>
+    <div *ngFor="let item of visibleItems">
+      <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item}"></ng-container>
+    </div>
+    <div [style.height.px]="(items.length - endIndex) * itemHeight"></div>
+  </div>

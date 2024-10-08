@@ -12,12 +12,12 @@ import {NavigationService} from "../../navigationService";
   }
 })
 export class PostComponent{
-  @Input() post: PostModel;
+  @Input() postModel: PostModel;
 
   constructor(private navigationService: NavigationService) {
   }
 
   postClicked($event){
-    this.navigationService.navigateToPost(this.post.id.toString());
+    this.navigationService.navigateToPost(this.postModel.id);
   }
 }

@@ -1,0 +1,22 @@
+<!--<form (ngsubmit)="addPost()" #newPostForm="ngForm">
+  <div>Title</div>
+  <input #titleInput="ngModel" [(ngModel)]="title" required/>
+  <div class="error" [hidden]="titleInput.valid || titleInput.pristine">Title is required</div>
+
+  <div>Comment</div>
+  <textarea [(ngModel)]="body"></textarea>
+
+  <button type="submit">Add</button>
+</form>-->
+
+<form (ngSubmit)="addPost()" #newPostForm="ngForm">
+  <div>Title</div>
+  <input #titleInput="ngModel" [(ngModel)]="title" name="title" required minlength="3"/>
+  <div class="error" [hidden]="titleInput.valid || titleInput.pristine">Title is required</div>
+
+  <div>Comment</div>
+  <textarea [(ngModel)]="body" name="body"></textarea>
+
+  <button type="submit">Add</button>
+
+</form>

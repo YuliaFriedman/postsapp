@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {PostModel} from "./postModel";
-import {loadPosts, setPosts} from "./postsActions";
+import {addPost, loadPosts, setPosts} from "./postsActions";
 import {postsSelector} from "./postsSelectors";
 import {map, Observable} from "rxjs";
 
@@ -28,9 +28,7 @@ export class PostsProducer{
     );
   }
 
-  getPostByIndex(index: number):Observable<PostModel>{
-    return this.store.select(postsSelector).pipe(
-      map(posts => posts && posts.length > index ? posts[index] : undefined)
-    );
+  addpost(post:PostModel){
+    this.store.dispatch(addPost(post));
   }
 }

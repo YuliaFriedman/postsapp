@@ -7,7 +7,12 @@ export class NavigationService{
  constructor(private router:Router) {
  }
 
- navigateToPost(id: string){
+ navigateToPost(id: number){
    this.router.navigate(["/post", id]);
  }
+
+ navigateToNewPost(){
+   this.router.navigate(["/newpost"]);
+ }
+
 }

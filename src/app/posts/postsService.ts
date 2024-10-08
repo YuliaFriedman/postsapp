@@ -3,9 +3,10 @@ import {PostModel} from "../store/posts/postModel";
 import {map, mergeMap, Observable, of, tap} from "rxjs";
 import {NetworkService} from "../network/networkService";
 import {PostsProducer} from "../store/posts/postsProducer";
-import {loadPosts, setPosts} from "../store/posts/postsActions";
+import {addPost, addPostCompleted, loadPosts, setPosts} from "../store/posts/postsActions";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
+import {NavigationService} from "../navigationService";
 
 @Injectable()
 export class PostsService {
@@ -13,7 +14,8 @@ export class PostsService {
   constructor(
     private networkService:NetworkService,
     private postsProducer:PostsProducer,
-    private actions$: Actions
+    private actions$: Actions,
+    private navigationService:NavigationService
   ) {
   }
 
@@ -43,4 +45,24 @@ export class PostsService {
     return this.postsProducer.getPosts();
   }
 
+  addPost$ = createEffect(() => this.actions$.pipe(
+    ofType(addPost),
+    mergeMap((post) => {
+      // @ts-ignore
+      return this.networkService.addPost(post).pipe(
+        map((result:PostModel) => addPostCompleted(result))
+      )
+    })
+  ));
+
+  addPostCompoeted$ = createEffect(() => this.actions$.pipe(
+    ofType(addPostCompleted),
+    tap((post) => {
+      this.navigationService.navigateToPost(post.id);
+    })
+  ), { dispatch: false });
+
+  addPost(post: PostModel){
+    this.postsProducer.addpost(post);
+  }
 }

@@ -15,13 +15,20 @@ import {PostComponent} from "./posts/post/post.component";
 import {PostsListComponent} from "./posts/postsList/postsList.component";
 import {NavigationService} from "./navigationService";
 import {PostPageComponent} from "./posts/postPage/postPage.component";
+import {VistualScrollComponent} from "./commonComponents/virtualScroll/vistualScroll.component";
+import {NewPostComponent} from "./posts/newPost/newPost.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HeaderComponent} from "./commonComponents/header/header.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
     PostsListComponent,
-    PostPageComponent
+    PostPageComponent,
+    VistualScrollComponent,
+    NewPostComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,9 @@ import {PostPageComponent} from "./posts/postPage/postPage.component";
     CommonModule,
     HttpClientModule,
     StoreModule.forRoot(appStore),
-    EffectsModule.forRoot([PostsService])
+    EffectsModule.forRoot([PostsService]),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     NetworkService,

@@ -19,6 +19,7 @@ import {VistualScrollComponent} from "./commonComponents/virtualScroll/vistualSc
 import {NewPostComponent} from "./posts/newPost/newPost.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HeaderComponent} from "./commonComponents/header/header.component";
+import {FlexDirective} from "./commonComponents/flexDirective/flex.directive";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {HeaderComponent} from "./commonComponents/header/header.component";
     PostPageComponent,
     VistualScrollComponent,
     NewPostComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import {HeaderComponent} from "./commonComponents/header/header.component";
     StoreModule.forRoot(appStore),
     EffectsModule.forRoot([PostsService]),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexDirective
   ],
   providers: [
     NetworkService,

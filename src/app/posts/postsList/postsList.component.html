@@ -1,11 +1,13 @@
 <app-header>
   <div center #center>POSTS APP</div>
   <button left (click)="showNewPostPage()">Add Post</button>
+  <button right (click)="changeColor()">Change Color</button>
+
 </app-header>
 <ng-container *ngIf="postsService.getPosts() | async as posts">
   <virtual-scroll [items]="posts" [buffer]="10" [itemHeight]="84" [numOfItems]="10">
     <ng-template let-item>
-      <post [postModel]="item"></post>
+      <post [postModel]="item" (onClick)="postClicked($event)"></post>
     </ng-template>
   </virtual-scroll>
 </ng-container>
